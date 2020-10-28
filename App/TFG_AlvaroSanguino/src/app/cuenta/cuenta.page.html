@@ -1,0 +1,85 @@
+<ion-menu side="start" menuId="first" contentId="menu">
+  <ion-header>
+    <ion-toolbar color="light">
+      <ion-title>Menu</ion-title>
+    </ion-toolbar>
+  </ion-header>
+  <ion-content>
+    <ion-list>
+      <ion-item (click)="viewPerfil()">
+        <p>Perfil</p>
+        <ion-icon slot="end" name="person-outline" color="alert"></ion-icon>
+      </ion-item>
+      <ion-item (click)="cerrarSesion()">
+        <p>Cerrar Sesion</p>
+        <ion-icon slot="end" name="exit-outline" color="danger"></ion-icon>
+      </ion-item>
+      
+    </ion-list>
+  </ion-content>
+</ion-menu>
+  
+<ion-header>
+  <ion-toolbar color="dark">
+    <ion-buttons slot="start">
+    <ion-menu-button></ion-menu-button>
+    </ion-buttons>
+    <ion-title> Aplicación Parking</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content id="menu">
+  
+  <ion-list *ngFor="let usuarios of usuarioServ">
+    <ion-item [hidden] ="usuarios.matricula1.length == 0" >
+      <ion-avatar slot="start" (click)="mostrarMatricula(usuarios.matricula1)">
+        <ion-img [src]="avatarParking"></ion-img>
+      </ion-avatar>
+      <ion-label (click)="mostrarMatricula(usuarios.matricula1)">{{usuarios.matricula1}}</ion-label >
+      <ion-buttons slot="end">
+        <ion-button (click)="modMatricula(usuarios.matricula1,1)">
+          <ion-icon name="settings"></ion-icon>
+        </ion-button>
+        <ion-button (click)="delMatricula(1)"> 
+          <ion-icon name="trash"></ion-icon>
+        </ion-button>
+      </ion-buttons>
+    </ion-item>
+    <ion-item [hidden] ="usuarios.matricula2.length == 0" >
+      <ion-avatar slot="start" (click)="mostrarMatricula(usuarios.matricula2)">
+        <ion-img [src]="avatarParking"></ion-img>
+      </ion-avatar>
+      <ion-label (click)="mostrarMatricula(usuarios.matricula2)">{{usuarios.matricula2}}</ion-label >
+      <ion-buttons slot="end">
+        <ion-button (click)="modMatricula(usuarios.matricula2,2)">
+          <ion-icon name="settings"></ion-icon>
+        </ion-button>
+        <ion-button (click)="delMatricula(2)"> 
+          <ion-icon name="trash"></ion-icon>
+        </ion-button>
+      </ion-buttons>
+    </ion-item>
+    <ion-item [hidden] ="usuarios.matricula3.length == 0" >
+      <ion-avatar slot="start" (click)="mostrarMatricula(usuarios.matricula3)">
+        <ion-img [src]="avatarParking"></ion-img>
+      </ion-avatar>
+      <ion-label (click)="mostrarMatricula(usuarios.matricula3)">{{usuarios.matricula3}}</ion-label >
+      <ion-buttons slot="end">
+        <ion-button (click)="modMatricula(usuarios.matricula3,3)">
+          <ion-icon name="settings"></ion-icon>
+        </ion-button>
+        <ion-button (click)="delMatricula(3)"> 
+          <ion-icon name="trash"></ion-icon>
+        </ion-button>
+      </ion-buttons>
+    </ion-item>
+  </ion-list>    
+
+  <ion-fab vertical="bottom" horizontal="end" slot="fixed">
+    <ion-fab-button>
+      <ion-icon name="add" (click)="newMat()"></ion-icon>
+    </ion-fab-button>
+  </ion-fab>
+
+
+</ion-content>

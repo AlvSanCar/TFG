@@ -1,0 +1,22 @@
+<ion-header>
+  <ion-toolbar color="tertiary">
+    <ion-buttons slot="start"> 
+    <ion-back-button defaultHref="/cuenta/{{usrID}}"></ion-back-button>    
+  </ion-buttons>
+  <ion-title >Perfil Usuario</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-list>
+    <ion-item>
+      Nombre: {{usuario.nombre}}
+    </ion-item>
+    <ion-item>
+      Apellido: {{usuario.apellido}}
+    </ion-item>
+    <ion-item>
+      Email: {{usuario.email}}
+    </ion-item>
+  </ion-list>
+</ion-content>

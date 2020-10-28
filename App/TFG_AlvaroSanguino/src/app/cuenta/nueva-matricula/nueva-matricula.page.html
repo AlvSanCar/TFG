@@ -1,0 +1,43 @@
+<ion-header>
+  <ion-toolbar color="primary">
+    <ion-button fill="clear"slot="start" (click)="salir()"> 
+      <ion-icon color="light" name="arrow-back-outline"></ion-icon>
+    </ion-button>
+    <ion-title>Añadir Matriculas</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-list >
+    <ion-item     [hidden] ="m1.length > 0">
+      <ion-label position="floating"> Matricula 1</ion-label>
+      <ion-input  type="text"
+                  [(ngModel)]= "matricula1"
+                  placeholder ="Introducir una matricula"
+                  maxlength = '7' minlength = '7' >              
+      </ion-input>
+    </ion-item>
+    <ion-item     [hidden] ="m2.length > 0">
+      <ion-label position="floating"> Matricula 2</ion-label>
+      <ion-input  type="text"
+                  [(ngModel)]= "matricula2"
+                  placeholder ="Introducir una matricula"
+                  maxlength = '7' minlength = '7' >              
+      </ion-input>
+    </ion-item>
+    <ion-item     [hidden] ="m3.length > 0">
+      <ion-label position="floating"> Matricula 3</ion-label>
+      <ion-input  type="text"
+                  [(ngModel)]= "matricula3"
+                  placeholder ="Introducir una matricula"
+                  maxlength = '7' minlength = '7' >              
+      </ion-input>
+    </ion-item>
+  </ion-list>
+
+  <ion-fab vertical="bottom" horizontal="end" slot="fixed">
+    <ion-fab-button [disabled] ="matricula1.length == 0 || matricula2.length == 0 || matricula3.length == 0 ">
+      <ion-icon  name="checkmark-outline" (click)="registraMatriculas()"></ion-icon>
+    </ion-fab-button>
+  </ion-fab>        
+</ion-content>

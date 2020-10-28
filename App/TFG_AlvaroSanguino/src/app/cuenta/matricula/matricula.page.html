@@ -1,0 +1,35 @@
+<ion-header>
+  <ion-toolbar color="primary">
+    <ion-button fill="clear"slot="start" (click)="salir()"> 
+      <ion-icon color="light" name="arrow-back-outline"></ion-icon>
+    </ion-button>
+    <ion-title>Parking</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-list *ngFor="let matricula of matriculas">
+    <ion-list *ngIf="matricula.esLibre == 0; else noCoche">
+      <ion-item>
+        Matricula: {{matricula.matricula}}
+      </ion-item>
+      <ion-item>
+        Plaza: {{matricula.plaza}}
+      </ion-item>
+      <ion-item>
+        Fecha: {{matricula.fecha}}
+      </ion-item>
+      <ion-item>
+        Hora: {{matricula.hora}}
+      </ion-item>
+    </ion-list>
+    <ng-template #noCoche>
+      <ion-text>
+        <p class="ion-text-center">
+          Este vehículo no se encuentra aparcado en este parking.
+        </p>
+      </ion-text>
+    </ng-template>
+  </ion-list>
+  
+</ion-content>

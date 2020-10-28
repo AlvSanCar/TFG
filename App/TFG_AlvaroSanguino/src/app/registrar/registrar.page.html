@@ -1,0 +1,124 @@
+<ion-header>
+  <ion-toolbar color="primary">
+    <ion-buttons slot="start"> 
+      <ion-back-button defaultHref="/home"></ion-back-button>
+    </ion-buttons>
+    <ion-title>Nuevo Usuario</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <form #formulario="ngForm" (ngSubmit)="crearUsuario()">
+  <ion-list>
+    <ion-item>
+      <ion-label  position="floating" > Usuario</ion-label>
+      <ion-input  type="text"  
+                  [(ngModel)]='usuario.id' 
+                  name='usrId'
+                  required> </ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label position="floating"> Nombre</ion-label>
+      <ion-input  type="text"  
+                  [(ngModel)]='usuario.nombre' 
+                  name='usrNombre'
+                  required> </ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label position="floating"> Apellido</ion-label>
+      <ion-input type="text"  
+                 [(ngModel)]='usuario.apellido' 
+                 name='usrApellido'
+                 required  #userApellido> </ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label position="floating"> Email</ion-label>
+      <ion-input  type="email"  
+                  [(ngModel)]='usuario.email' 
+                  name='usrEmail'
+                  required>
+         </ion-input>
+    </ion-item>
+    <ion-label  *ngIf="(usuario.password.length > 0 || usuario.password.length != 8) && usuario.id.length != 0">
+      <p *ngIf="usuario.password.length != 8 && usuario.password != ''">
+        <ion-label class="ion-text-wrap" color="danger">
+          Longitud incorrecta (8)
+        </ion-label>
+      </p>
+    </ion-label>
+    <ion-item>
+    
+      <ion-label position="floating"> Contraseña</ion-label>
+      
+      <ion-input  type="password" 
+                  [(ngModel)]='usuario.password'
+                  name='usrPass'
+                  maxlength = '8'
+                  minlength='8'
+                  required> 
+      
+      </ion-input>
+      
+    </ion-item>
+    <ion-label *ngIf="usuario.password.length == 8 && usuario.password.length > 0">
+      <p *ngIf="usuario.password != usuario.repeat ">
+        <ion-label class="ion-text-wrap" color="danger">
+          Contraseñas deben ser iguales
+        </ion-label>
+      </p>
+    </ion-label> 
+    <ion-item>
+      <ion-label position="floating">Confirmar Contraseña</ion-label>
+      <ion-input  type="password" 
+                  [(ngModel)]='usuario.repeat'
+                  name='usrPassCon'
+                  maxlength = '8'
+                  minlength='8'
+                  required> </ion-input>
+  
+    </ion-item>
+    
+    <ion-item>
+      <ion-label position="floating"> Matricula 1</ion-label>
+      <ion-input  type="text" 
+                  placeholder ="8888DDD" 
+                  [(ngModel)]='usuario.matricula1'
+                  name='mat1'
+                  maxlength = '7'
+                  minlength='7'
+                  required> </ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label position="floating"> Matricula 2</ion-label>
+      <ion-input  type="text" 
+                  placeholder ="8888DDD" 
+                  [(ngModel)]='usuario.matricula2'
+                  name='mat2'
+                  maxlength = '7'
+                  minlength='7'> </ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label position="floating"> Matricula 3</ion-label>
+      <ion-input  type="text" 
+                  placeholder ="8888DDD" 
+                  [(ngModel)]='usuario.matricula3'
+                  name='mat3'
+                  maxlength = '7'
+                  minlength='7'> </ion-input>
+    </ion-item>
+  </ion-list>
+</form>
+  <ion-grid>
+    <ion-row>
+      <ion-col>
+        <ion-button [disabled] = "formulario.invalid" 
+                    color="primary" 
+                    expand="block" 
+                    (click)="crearUsuario()">
+          Registrarse
+        </ion-button>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+
+</ion-content>

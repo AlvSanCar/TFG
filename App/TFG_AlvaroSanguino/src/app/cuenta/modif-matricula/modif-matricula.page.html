@@ -1,0 +1,30 @@
+<ion-header>
+  <ion-toolbar color="primary">
+    <ion-button fill="clear"slot="start" (click)="salir()"> 
+      <ion-icon color="light" name="arrow-back-outline"></ion-icon>
+    </ion-button>
+    <ion-title>Modificar Matricula</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-list>
+    <ion-item >
+      Matricula:  {{matricula}}
+    </ion-item>
+    <ion-item>
+      <ion-label position="floating"> Nueva Matricula</ion-label>
+      <ion-input  type="text" placeholder ="Introduce Matricula nueva" #matriculaNueva>
+      </ion-input>
+    </ion-item>
+  </ion-list>
+
+  <ion-fab vertical="bottom" horizontal="end" slot="fixed">
+    <ion-fab-button>
+      <ion-icon name="checkmark-outline" (click)="modiMatricula(matricula,matriculaNueva)"></ion-icon>
+    </ion-fab-button>
+  </ion-fab>
+   
+  
+
+</ion-content>

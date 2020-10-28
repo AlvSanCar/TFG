@@ -1,0 +1,59 @@
+import { Component, OnInit } from '@angular/core';
+import { CuentaService } from '../cuenta/cuenta.service';
+
+import {  AlertController} from "@ionic/angular";
+import { ActivatedRoute, Router    } from "@angular/router";
+
+@Component({
+  selector: 'app-home',
+  templateUrl: 'home.page.html',
+  styleUrls: ['home.page.scss'],
+})
+export class HomePage implements OnInit{
+
+  private usuario={
+    id: '',
+    pass:'' 
+    }
+
+  private usuarioResult:[]
+  private iconParkingUrl2 ="data:image/jpeg;base64,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"
+  constructor( private cuentaService: CuentaService,private actRouter:ActivatedRoute,
+    private router:Router,private  alertController: AlertController) {}
+
+  ngOnInit(){
+
+
+  }
+
+ login(){
+    
+
+    this.cuentaService.loginUsuarioServ(this.usuario).subscribe(data =>{
+      this.usuarioResult = data;
+      if(this.usuarioResult != null){
+      this.router.navigate(['/cuenta',this.usuario.id])
+      }
+      else{
+        this.alertaMensaje();
+      }
+    })
+  }
+
+  async alertaMensaje(){
+    const alertElemento = await this.alertController.create({
+      header:'Alerta',
+      message:'El usuario o la contraseña son incorrectos',
+      buttons:[
+        {
+          text: 'Aceptar',
+          role:'cancel'
+        }
+
+      ]
+    });
+
+    await alertElemento.present()
+  }
+
+}
